@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package products;
+
+option go_package = "github.com/abdukhashimov/go_api_mono_repo/generated/products";
+
+
+message Product {
+    string name  = 1;
+    string description = 2;
+    float price = 3;
+}
+
+message ProductPk {
+    int32 id = 1;
+}
+
+message ProductList {
+    repeated Product products = 1;
+}

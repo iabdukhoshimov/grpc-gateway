@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package products;
+option go_package = "github.com/abdukhashimov/go_api_mono_repo/generated/products";
+import "google/api/annotations.proto";
+import "shared_types/request.proto";
+import "products/types.proto";
+
+service ProductService {
+    rpc CreateProduct(Product) returns (Product) {
+        option (google.api.http) = {
+            post: "/v1/products",
+            body: "*"
+        };
+    }
+    rpc GetProductById(ProductPk) returns (Product) {
+        option (google.api.http) = {
+            get: "/v1/products/{id}",
+        };
+    }
+
+    // shared and GetAllRequestSlim 
+    rpc GetAllProducts(shared_types.GetAllRequestSlim) returns (ProductList) {
+        option (google.api.http) = {
+            get: "/v1/products",
+        };
+    }
+
+}

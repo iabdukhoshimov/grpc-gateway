@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package shared_types;
+
+option go_package = "github.com/abdukhashimov/go_api_mono_repo/generated/products";
+
+import "google/api/visibility.proto";
+import "validate/validate.proto";
+
+message GetAllRequestSlim {
+    int32 page_size = 1 [json_name = "page_size", (validate.rules).int32.gt = 0];
+    int32 page      = 2 [json_name = "page", (validate.rules).int32.gt = 0];
+    string search   = 3;
+    string user_id  = 4 [json_name = "user_id", (google.api.field_visibility).restriction = "INTERNAL"];
+    int32 limit     = 5 [(google.api.field_visibility).restriction = "INTERNAL"];
+    int32 offset    = 6 [(google.api.field_visibility).restriction = "INTERNAL"];
+}

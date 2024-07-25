@@ -38,4 +38,17 @@ service UserService {
             get: "/v1/user/{id}",
         };
     }
+
+    rpc UpdateUser(User) returns (User) {
+        option (google.api.http) = {
+            put: "/v1/user",
+            body: "*"
+        };
+    }
+
+    rpc DeleteUser(UserPk) returns (User) {
+        option (google.api.http) = {
+            delete: "/v1/user/{id}",
+        };
+    }
 }
